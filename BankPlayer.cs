@@ -26,9 +26,10 @@ public class BankPlayer : ModPlayer
             if (button.Bind?.JustPressed == true) button.KeybindPress();
 
             if (!button.Hovering) continue;
+
             Main.blockMouse = true;
 
-            bool quickstack = Config.Instance.QuickstackingEnabled && Main.keyState.PressingShift();
+            bool quickstack = Config.Instance.QuickstackEnabled && Main.keyState.PressingShift();
             if (quickstack) Main.cursorOverride = 9;
 
             if (PlayerInput.Triggers.JustPressed.MouseLeft)

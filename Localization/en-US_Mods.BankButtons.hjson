@@ -35,9 +35,14 @@ Configs: {
 			Label: Dragging Allowed
 		}
 
-		QuickstackingEnabled: {
-			Label: Quickstacking Enabled
+		QuickstackEnabled: {
+			Label: Quickstack Enabled
 			Tooltip: Shift clicking a button will quickstack into that bank
+		}
+
+		QuickstackNearby: {
+			Tooltip: quickstacking to nearby chests will also quickstack into all banks
+			Label: Quickstack to Nearby Chests Enabled
 		}
 
 		Chester: {

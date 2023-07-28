@@ -50,11 +50,11 @@ public class ButtonsUI : UIState
             }
 
             Rectangle rect = new((int)position.X, (int)position.Y, tex.Width, tex.Height);
+
             button.Hovering = rect.Contains((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y);
             bool inChest = Main.LocalPlayer.chest == button.BankChestId;
 
             spriteBatch.Draw(tex, position, Color.White);
-
             if (Dragging)
             {
                 spriteBatch.Draw(button.Border.Value, position, Main.hslToRgb(Main.GlobalTimeWrappedHourly * 0.25f % 1f, 1f, 0.75f));

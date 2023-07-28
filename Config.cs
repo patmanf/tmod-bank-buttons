@@ -12,7 +12,10 @@ internal class Config : ModConfig
     public static Config Instance;
 
     [DefaultValue(true)]
-    public bool QuickstackingEnabled;
+    public bool QuickstackEnabled;
+
+    [DefaultValue(true)]
+    public bool QuickstackNearby;
 
     [DefaultValue(false)]
     public bool Chester;
