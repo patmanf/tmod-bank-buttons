@@ -1,0 +1,10 @@
+adds buttons that open your banks
+you need to have the bank item in your inventory/void bag (or chester <3). or be standing near a placed bank
+shift clicking the button quick stacks into that bank (togglable)
+there's also keybinds for each bank
+
+you can put the buttons wherever you want. and if you enable dragging in the settings you can press middle click + move them around with your cursor
+
+very cool i think
+
+https://discord.gg/GdsQSgV

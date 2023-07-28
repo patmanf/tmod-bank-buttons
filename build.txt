@@ -1,0 +1,5 @@
+displayName = Bank Buttons
+author = patman
+version = 1.0
+includeSource = true
+side = Client
