@@ -54,6 +54,11 @@ Configs: {
 			Label: Pre Draw Offset Thingy
 			Tooltip: origin is  the last button instead of the first button,
 		}
+
+		AlwaysVisible: {
+			Tooltip: "buttons will be visible even without the bank in your inventory/void bag/placed nearby"
+			Label: Buttons Always Visible
+		}
 	}
 }
 

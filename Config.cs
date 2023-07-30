@@ -20,6 +20,9 @@ internal class Config : ModConfig
     [DefaultValue(false)]
     public bool Chester;
 
+    [DefaultValue(false)]
+    public bool AlwaysVisible;
+
     [DefaultValue(true)]
     public bool PreDrawOffset;
 

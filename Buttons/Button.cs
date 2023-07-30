@@ -48,7 +48,8 @@ public class Button
         CloseSound = closeSound ?? (sound ?? SoundID.MenuClose);
     }
 
-    public virtual bool Visible => ItemTypes.Any(BankPlayer.ItemInInventoryOrVoidBag)
+    public virtual bool Visible => Config.Instance.AlwaysVisible
+                                || ItemTypes.Any(BankPlayer.ItemInInventoryOrVoidBag)
                                 || TileTypes.Any(tile => Main.LocalPlayer.IsTileTypeInInteractionRange(tile, TileReachCheckSettings.Simple));
 
     public virtual Texture2D GetIcon => Icon.Value;
