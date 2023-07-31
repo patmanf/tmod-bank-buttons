@@ -56,7 +56,7 @@ Configs: {
 		}
 
 		AlwaysVisible: {
-			Tooltip: "buttons will be visible even without the bank in your inventory/void bag/placed nearby"
+			Tooltip: buttons will be visible even without the bank in your inventory/void bag/placed nearby
 			Label: Buttons Always Visible
 		}
 	}

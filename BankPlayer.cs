@@ -25,7 +25,7 @@ public class BankPlayer : ModPlayer
 
             if (button.Bind?.JustPressed == true) button.KeybindPress();
 
-            if (!button.Hovering) continue;
+            if (!button.Hovering || !Main.playerInventory) continue;
 
             Main.blockMouse = true;
 
