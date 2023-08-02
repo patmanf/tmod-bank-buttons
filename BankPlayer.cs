@@ -76,7 +76,7 @@ public class BankPlayer : ModPlayer
 
         int chest = Player.chest;
         Player.chest = button.BankChestId;
-        ChestUI.QuickStack(ContainerTransferContext.FromUnknown(Player));
+        ChestUI.QuickStack();
         Player.chest = chest;
     }
 

@@ -28,8 +28,8 @@ public class BankButtons : Mod
     {
         Mod = this;
 
-        On_Player.HandleBeingInChestRange += ChestRange;
-        On_Player.QuickStackAllChests += NearQuickstack;
+        On.Terraria.Player.HandleBeingInChestRange += ChestRange;
+        On.Terraria.Player.QuickStackAllChests += NearQuickstack;
 
         Buttons = new() {
             new PigButton(
@@ -37,12 +37,12 @@ public class BankButtons : Mod
                 itemTypes: new List<int>() { ItemID.MoneyTrough, ItemID.PiggyBank },
                 tileTypes: new List<int>() { TileID.PiggyBank },
                 petBuff: BuffID.ChesterPet,
-                hoverText: Language.GetOrRegister("Mods.BankButtons.Tooltips.PiggyBank"),
-                petHoverText: Language.GetOrRegister("Mods.BankButtons.Tooltips.Chester"),
+                hoverText: "Piggy Bank",
+                petHoverText: "Chester",
                 icon: ModContent.Request<Texture2D>("BankButtons/Icons/Pig"),
                 iconPet: ModContent.Request<Texture2D>("BankButtons/Icons/Chester"),
                 border: ModContent.Request<Texture2D>("BankButtons/Icons/PigBorder"),
-                bind: KeybindLoader.RegisterKeybind(this, "OpenPiggyBank", "None"),
+                bind: KeybindLoader.RegisterKeybind(this, "[i:87] Open Piggy Bank", "None"),
                 sound: SoundID.Item59,
                 petOpenSound: SoundID.ChesterOpen,
                 petCloseSound: SoundID.ChesterClose
@@ -51,35 +51,30 @@ public class BankButtons : Mod
                 bankChestId: BankIds.Safe,
                 itemTypes: new List<int>() { ItemID.Safe },
                 tileTypes: new List<int>() { TileID.Safes },
-                hoverText: Language.GetOrRegister("Mods.BankButtons.Tooltips.Safe"),
+                hoverText: "Safe",
                 icon: ModContent.Request<Texture2D>("BankButtons/Icons/Safe"),
                 border: ModContent.Request<Texture2D>("BankButtons/Icons/SafeBorder"),
-                bind: KeybindLoader.RegisterKeybind(this, "OpenSafe", "None"),
+                bind: KeybindLoader.RegisterKeybind(this, "[i:346] Open Safe", "None"),
                 sound: SoundID.Unlock
             ),
             new Button(
                 bankChestId: BankIds.DefendersForge,
                 itemTypes: new List<int>() { ItemID.DefendersForge },
                 tileTypes: new List<int>() { TileID.DefendersForge },
-                hoverText: Language.GetOrRegister("Mods.BankButtons.Tooltips.DefendersForge"),
+                hoverText: "Defender's Forge",
                 icon: ModContent.Request<Texture2D>("BankButtons/Icons/Forge"),
                 border: ModContent.Request<Texture2D>("BankButtons/Icons/ForgeBorder"),
-                bind: KeybindLoader.RegisterKeybind(this, "OpenDefendersForge", "None"),
+                bind: KeybindLoader.RegisterKeybind(this, "[i:3813] Open Defenders Forge", "None"),
                 sound: SoundID.DD2_EtherianPortalSpawnEnemy
             ),
-            new VoidButton(
+            new Button(
                 bankChestId: BankIds.VoidVault,
-                itemOpen: ItemID.VoidLens,
-                itemClosed: ItemID.ClosedVoidBag,
-                itemTypes: new List<int>() { ItemID.VoidVault },
+                itemTypes: new List<int>() { ItemID.VoidLens, ItemID.VoidVault },
                 tileTypes: new List<int>() { TileID.VoidVault },
-                hoverText: Language.GetOrRegister("Mods.BankButtons.Tooltips.VoidBag"),
-                openHoverText: Language.GetOrRegister("Mods.BankButtons.Tooltips.VoidBagOpen"),
-                closedHoverText: Language.GetOrRegister("Mods.BankButtons.Tooltips.VoidBagClosed"),
+                hoverText: "Void Vault",
                 icon: ModContent.Request<Texture2D>("BankButtons/Icons/Void"),
-                iconClosed: ModContent.Request<Texture2D>("BankButtons/Icons/VoidClosed"),
                 border: ModContent.Request<Texture2D>("BankButtons/Icons/VoidBorder"),
-                bind: KeybindLoader.RegisterKeybind(this, "OpenVoidBag", "None"),
+                bind: KeybindLoader.RegisterKeybind(this, "[i:4131] Open Void Vault", "None"),
                 sound: SoundID.Item130
             )
         };
@@ -89,11 +84,11 @@ public class BankButtons : Mod
     {
         Mod = null;
         Buttons = null;
-        On_Player.HandleBeingInChestRange -= ChestRange;
-        On_Player.QuickStackAllChests -= NearQuickstack;
+        On.Terraria.Player.HandleBeingInChestRange -= ChestRange;
+        On.Terraria.Player.QuickStackAllChests -= NearQuickstack;
     }
 
-    private void ChestRange(On_Player.orig_HandleBeingInChestRange orig, Player player)
+    private void ChestRange(On.Terraria.Player.orig_HandleBeingInChestRange orig, Player player)
     {
         if (player.chest == LastOpenedBank) return;
         if (LastOpenedBank != null) LastOpenedBank = null;
@@ -101,7 +96,7 @@ public class BankButtons : Mod
         orig.Invoke(player);
     }
 
-    private void NearQuickstack(On_Player.orig_QuickStackAllChests orig, Player player)
+    private void NearQuickstack(On.Terraria.Player.orig_QuickStackAllChests orig, Player player)
     {
         orig.Invoke(player);
 

@@ -12,7 +12,7 @@ public class PigButton : Button
 {
     public int PetBuff;
 
-    public LocalizedText PetHoverText;
+    public string PetHoverText;
 
     public Asset<Texture2D> IconPet;
 
@@ -24,8 +24,8 @@ public class PigButton : Button
         List<int> itemTypes,
         List<int> tileTypes,
         int petBuff,
-        LocalizedText hoverText,
-        LocalizedText petHoverText,
+        string hoverText,
+        string petHoverText,
         Asset<Texture2D> icon,
         Asset<Texture2D> iconPet,
         Asset<Texture2D> border,
@@ -43,11 +43,11 @@ public class PigButton : Button
         PetCloseSound = petCloseSound ?? CloseSound;
     }
 
-    private bool Pet => Config.Instance.Chester && Main.LocalPlayer.HasBuff(PetBuff);
+    private bool Pet => Main.LocalPlayer.HasBuff(PetBuff);
 
     public override bool Visible => Pet || base.Visible; 
-    public override Texture2D GetIcon => (Pet ? IconPet : Icon).Value;
-    public override string GetHoverText => (Pet ? PetHoverText : HoverText).Value;
+    public override Texture2D GetIcon => (Config.Instance.Chester && Pet ? IconPet : Icon).Value;
+    public override string GetHoverText => Config.Instance.Chester && Pet ? PetHoverText : HoverText;
 
     public override SoundStyle GetSound(bool open)
     {

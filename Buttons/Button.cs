@@ -18,7 +18,7 @@ public class Button
     public int BankChestId;
     public List<int> ItemTypes;
     public List<int> TileTypes;
-    public LocalizedText HoverText;
+    public string HoverText;
     public Asset<Texture2D> Icon;
     public Asset<Texture2D> Border;
     public ModKeybind Bind;
@@ -28,7 +28,7 @@ public class Button
     public Button(int bankChestId,
         List<int> itemTypes,
         List<int> tileTypes,
-        LocalizedText hoverText,
+        string hoverText,
         Asset<Texture2D> icon,
         Asset<Texture2D> border,
         ModKeybind bind,
@@ -50,10 +50,10 @@ public class Button
 
     public virtual bool Visible => Config.Instance.AlwaysVisible
                                 || ItemTypes.Any(BankPlayer.ItemInInventoryOrVoidBag)
-                                || TileTypes.Any(tile => Main.LocalPlayer.IsTileTypeInInteractionRange(tile, TileReachCheckSettings.Simple));
+                                || TileTypes.Any(tile => Main.LocalPlayer.IsTileTypeInInteractionRange(tile));
 
     public virtual Texture2D GetIcon => Icon.Value;
-    public virtual string GetHoverText => HoverText.Value;
+    public virtual string GetHoverText => HoverText;
     public virtual SoundStyle GetSound(bool open) => open ? OpenSound : CloseSound;
 
     public virtual void MouseLeft() => BankPlayer.OpenBank(this);

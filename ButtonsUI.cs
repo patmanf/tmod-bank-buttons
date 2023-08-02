@@ -92,6 +92,9 @@ public class ButtonsUI : UIState
         if (PlayerInput.Triggers.JustPressed.MouseLeft)
             Config.Instance.Horizontal = !Config.Instance.Horizontal;
 
+        if (PlayerInput.Triggers.JustPressed.MouseRight) 
+            Config.Instance.PreDrawOffset = !Config.Instance.PreDrawOffset;
+
         if (PlayerInput.Triggers.JustPressed.MouseMiddle || !Config.Instance.DraggingEnabled)
         {
             Dragging = false;
