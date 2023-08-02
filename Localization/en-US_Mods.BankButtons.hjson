@@ -31,6 +31,7 @@ Configs: {
 				pressing the middle mouse button will drag the buttons around
 				press middle mouse again to stop dragging
 				while dragging, pressing leftmouse will toggle horizontal button mode
+				and rightmouse will toggle the 'predraw offset thingy'
 				'''
 			Label: Dragging Allowed
 		}
