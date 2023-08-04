@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.UI;
 
 namespace BankButtons;
 
@@ -29,7 +30,7 @@ public class BankButtons : Mod
         Mod = this;
 
         On_Player.HandleBeingInChestRange += ChestRange;
-        On_Player.QuickStackAllChests += NearQuickstack;
+        On_Player.QuickStackAllChests += QuickStackAll;
 
         Buttons = new() {
             new PigButton(
@@ -90,7 +91,7 @@ public class BankButtons : Mod
         Mod = null;
         Buttons = null;
         On_Player.HandleBeingInChestRange -= ChestRange;
-        On_Player.QuickStackAllChests -= NearQuickstack;
+        On_Player.QuickStackAllChests -= QuickStackAll;
     }
 
     private void ChestRange(On_Player.orig_HandleBeingInChestRange orig, Player player)
@@ -101,16 +102,16 @@ public class BankButtons : Mod
         orig.Invoke(player);
     }
 
-    private void NearQuickstack(On_Player.orig_QuickStackAllChests orig, Player player)
+    private void QuickStackAll(On_Player.orig_QuickStackAllChests orig, Player player)
     {
-        orig.Invoke(player);
-
         if (Config.Instance.QuickstackNearby) {
             foreach (Button button in Buttons)
             {
                 if (!button.Visible) continue;
-                BankPlayer.QuickStack(button);
+                UISystem.QuickStack(button);
             }
         }
+
+        orig.Invoke(player);
     }
 }

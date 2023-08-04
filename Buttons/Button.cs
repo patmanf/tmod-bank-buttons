@@ -49,14 +49,14 @@ public class Button
     }
 
     public virtual bool Visible => Config.Instance.AlwaysVisible
-                                || ItemTypes.Any(BankPlayer.ItemInInventoryOrVoidBag)
+                                || ItemTypes.Any(UISystem.ItemInInventoryOrVoidBag)
                                 || TileTypes.Any(tile => Main.LocalPlayer.IsTileTypeInInteractionRange(tile, TileReachCheckSettings.Simple));
 
     public virtual Texture2D GetIcon => Icon.Value;
     public virtual string GetHoverText => HoverText.Value;
     public virtual SoundStyle GetSound(bool open) => open ? OpenSound : CloseSound;
 
-    public virtual void MouseLeft() => BankPlayer.OpenBank(this);
+    public virtual void MouseLeft() => UISystem.OpenBank(this);
     public virtual void MouseRight() { }
-    public virtual void KeybindPress() => BankPlayer.OpenBank(this);
+    public virtual void KeybindPress() => UISystem.OpenBank(this);
 }
