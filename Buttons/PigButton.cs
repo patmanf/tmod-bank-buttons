@@ -3,7 +3,6 @@ using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace BankButtons.Buttons;
@@ -51,7 +50,7 @@ public class PigButton : Button
 
     public override SoundStyle GetSound(bool open)
     {
-        if (Pet) { return open ? PetOpenSound : PetCloseSound; }
+        if (Config.Instance.Chester && Pet) { return open ? PetOpenSound : PetCloseSound; }
         return base.GetSound(open);
     }
 }

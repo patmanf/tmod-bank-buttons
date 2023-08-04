@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace BankButtons.Buttons;
@@ -49,14 +47,14 @@ public class Button
     }
 
     public virtual bool Visible => Config.Instance.AlwaysVisible
-                                || ItemTypes.Any(BankPlayer.ItemInInventoryOrVoidBag)
+                                || ItemTypes.Any(UISystem.ItemInInventoryOrVoidBag)
                                 || TileTypes.Any(tile => Main.LocalPlayer.IsTileTypeInInteractionRange(tile));
 
     public virtual Texture2D GetIcon => Icon.Value;
     public virtual string GetHoverText => HoverText;
     public virtual SoundStyle GetSound(bool open) => open ? OpenSound : CloseSound;
 
-    public virtual void MouseLeft() => BankPlayer.OpenBank(this);
+    public virtual void MouseLeft() => UISystem.OpenBank(this);
     public virtual void MouseRight() { }
-    public virtual void KeybindPress() => BankPlayer.OpenBank(this);
+    public virtual void KeybindPress() => UISystem.OpenBank(this);
 }
