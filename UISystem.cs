@@ -42,14 +42,14 @@ public class UISystem : ModSystem
 
         layers.Insert(++index, new LegacyGameInterfaceLayer(
             "BankButtons: Buttons",
-            delegate {
+            delegate
+            {
                 ButtonsInterface.Draw(Main.spriteBatch, new GameTime());
                 return true;
             },
             InterfaceScaleType.UI
         ));
     }
-
 
     public override void UpdateUI(GameTime gameTime)
     {
@@ -60,7 +60,10 @@ public class UISystem : ModSystem
             if (button.BankChestId == BankIds.VoidVault) VoidVisible = button.Visible;
             if (!button.Visible) continue;
 
-            if (button.Bind?.JustPressed == true) button.KeybindPress();
+            if (!(Main.drawingPlayerChat || Main.editSign || Main.editChest || Main.blockInput || Main.LocalPlayer.dead || Main.ingameOptionsWindow || Main.gameMenu || Main.inFancyUI))
+            {
+                if (button.Bind?.JustPressed == true) button.KeybindPress();
+            }
 
             if (!button.Hovering || !Main.playerInventory) continue;
 

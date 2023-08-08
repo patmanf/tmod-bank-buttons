@@ -51,7 +51,7 @@ public class PigButton : Button
 
     public override SoundStyle GetSound(bool open)
     {
-        if (Pet) { return open ? PetOpenSound : PetCloseSound; }
+        if (Config.Instance.Chester && Pet) { return open ? PetOpenSound : PetCloseSound; }
         return base.GetSound(open);
     }
 }

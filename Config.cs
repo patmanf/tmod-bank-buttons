@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Reflection;
-using Terraria;
 using Terraria.ModLoader.Config;
 
 namespace BankButtons;
@@ -23,15 +22,15 @@ internal class Config : ModConfig
     [DefaultValue(false)]
     public bool AlwaysVisible;
 
-    [DefaultValue(true)]
-    public bool PreDrawOffset;
-
     [Header("Position")]
+    [DefaultValue(false)]
+    public bool DraggingEnabled;
+
     [DefaultValue(false)]
     public bool Horizontal;
 
-    [DefaultValue(false)]
-    public bool DraggingEnabled;
+    [DefaultValue(true)]
+    public bool PreDrawOffset;
 
     [DefaultValue(570)]
     [Range(0, int.MaxValue)]
